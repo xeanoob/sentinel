@@ -1,164 +1,214 @@
+<br />
 <div align="center">
-  <img src="https://img.icons8.com/color/120/000000/cyber-security.png" alt="Sentinel Logo" width="100"/>
-  <h1>Sentinel DAST</h1>
-  <p><strong>Plateforme DevSecOps de Tests de Sécurité Applicative Dynamique (DAST)</strong></p>
+  <a href="https://github.com/xeanoob/sentinel">
+    <img src="https://img.icons8.com/color/240/000000/cyber-security.png" alt="Sentinel Logo" width="120" height="120">
+  </a>
+
+  <h3 align="center">Sentinel DAST</h3>
+
+  <p align="center">
+    An Enterprise-Grade Dynamic Application Security Testing (DAST) Platform.
+    <br />
+    <a href="#about-the-project"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="#usage">View Demo</a>
+    ·
+    <a href="https://github.com/xeanoob/sentinel/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/xeanoob/sentinel/issues">Request Feature</a>
+  </p>
 </div>
 
+<!-- BADGES -->
+<div align="center">
+  <img src="https://img.shields.io/badge/Next.js-16.2-black?style=for-the-badge&logo=next.js" alt="Next.js" />
+  <img src="https://img.shields.io/badge/FastAPI-0.109-009688?style=for-the-badge&logo=fastapi" alt="FastAPI" />
+  <img src="https://img.shields.io/badge/Python-3.9+-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Playwright-Enabled-45ba4b?style=for-the-badge&logo=playwright&logoColor=white" alt="Playwright" />
+  <img src="https://img.shields.io/badge/Docker-Supported-2496ED?style=for-the-badge&logo=docker" alt="Docker" />
+</div>
+
+<br />
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+      </ul>
+    </li>
+    <li><a href="#key-features">Key Features</a></li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation--deployment">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage & CI/CD</a></li>
+    <li><a href="#extending-sentinel">Extending Sentinel</a></li>
+    <li><a href="#license">License</a></li>
+  </ol>
+</details>
+
 ---
 
-**Sentinel** est un scanner DAST d'entreprise conçu pour identifier automatiquement les vulnérabilités de sécurité dans vos applications web et API. Alliant une interface Next.js moderne à un moteur Python haute performance basé sur Playwright et Celery, Sentinel s'intègre parfaitement à vos processus d'intégration continue (CI/CD).
+## About The Project
 
-## ✨ Fonctionnalités Principales
+**Sentinel** is a modern, distributed Dynamic Application Security Testing (DAST) tool designed to fit seamlessly into DevSecOps environments. Unlike traditional scanners, Sentinel leverages a real browser engine to execute JavaScript and traverse complex Single Page Applications (SPAs) before analyzing network requests, DOM mutations, and server responses for critical security flaws.
 
-*   📊 **Tableau de Bord Global (Analytics)** : Vue macro sur l'état de sécurité de toute votre infrastructure (Tendances, KPIs, Répartition des sévérités).
-*   🚀 **Moteur de Scan Dynamique** : Basé sur Playwright pour exécuter le JavaScript et crawler les applications SPA/PWA complexes.
-*   🔍 **Détection de Vulnérabilités** : XSS, SQLi, CSRF, SSRF, LFI, Open Redirects, Command Injection, Exposition de Secrets, Mauvaises configurations SSL/Headers, IDOR.
-*   🛡️ **Gestion des Faux Positifs** : Mettez en sourdine les failles acceptées pour ne plus être alerté lors des prochains scans.
-*   📄 **Rapports PDF Natifs** : Génération automatisée de rapports d'audit élégants au format PDF pour vos clients ou équipes.
-*   🕒 **Scans Planifiés** : Automatisez vos audits de sécurité hebdomadaires via Celery Beat.
-*   🔄 **Comparaison de Scans (History)** : Comparez deux audits pour détecter instantanément les failles résolues et les régressions.
-*   🤖 **Intégration CI/CD** : Déclenchez des audits depuis GitHub Actions ou GitLab CI via l'API REST protégée par clé API.
-*   🔑 **Authentification de bout en bout** : Scans authentifiés (injection de credentials via Playwright) pour analyser l'intérieur de votre application.
+Whether you are performing a one-off audit or integrating automated security checks into your GitHub Actions pipeline, Sentinel provides real-time streaming feedback and comprehensive vulnerability management.
 
----
+### Built With
 
-## 🏗️ Architecture du Projet
+*   [![Next.js][Next.js]][Next-url]
+*   [![Tailwind][Tailwind]][Tailwind-url]
+*   [![FastAPI][FastAPI]][FastAPI-url]
+*   [![Celery][Celery]][Celery-url]
+*   [![Redis][Redis]][Redis-url]
+*   [![Playwright][Playwright]][Playwright-url]
 
-Sentinel repose sur une architecture microservices asynchrone pour garantir des performances optimales lors des scans longs :
+### Architecture
 
-*   **Frontend (Next.js 16 + TailwindCSS)** : Interface réactive, graphiques en temps réel via Server-Sent Events (SSE).
-*   **Backend API (FastAPI)** : Gère les requêtes utilisateur, l'authentification et l'API CI/CD.
-*   **Message Broker (Redis)** : File d'attente pour la communication asynchrone.
-*   **Workers (Celery)** : Exécutent les scans Playwright en arrière-plan sans bloquer l'API.
+Sentinel relies on an asynchronous microservices architecture. Long-running scans are decoupled from the API using Redis and Celery, ensuring the Next.js dashboard remains perfectly responsive.
 
 ```mermaid
 graph LR
-    A[Utilisateur / CI-CD] -->|HTTP / API| B(Frontend Next.js / API FastAPI)
-    B -->|Tâches de Scan| C[Redis Broker]
-    C -->|Consomme| D[Celery Workers]
-    D -->|Playwright| E((Applications Cibles))
-    D -->|SSE Events| B
+    User[DevSecOps Engineer] -->|HTTPS| Dashboard(Next.js Frontend)
+    Pipeline[CI/CD Pipeline] -->|API Key| API(FastAPI Backend)
+    Dashboard -->|Server-Sent Events| API
+    API -->|Queue Task| Redis[(Redis Broker)]
+    Redis -->|Consume| Celery[Celery Workers]
+    Celery -->|Browser Context| Target((Target Web App))
 ```
 
 ---
 
-## 📸 Aperçu de l'Interface
+## Key Features
 
-*(Note: Ajoutez vos propres captures d'écran dans un dossier `docs/` pour illustrer cette section)*
-
-1.  **Global Analytics** : Vue d'ensemble des vulnérabilités.
-    `![Analytics](docs/analytics.png)`
-2.  **Live Scan** : Progression du scan et logs en temps réel.
-    `![Live Scan](docs/live_scan.png)`
-3.  **CI/CD Integration** : Scripts et documentation d'automatisation.
-    `![CI/CD](docs/cicd.png)`
+- **Advanced Crawler**: Context-aware crawling capable of handling complex authentication flows, JWTs, and session cookies.
+- **Vulnerability Engine**: Detects OWASP Top 10 vulnerabilities including XSS, SQLi, SSRF, LFI, CSRF, IDOR, Open Redirects, and Secret Leakage.
+- **Global Analytics**: A high-level DevSecOps dashboard tracking vulnerabilities across your entire infrastructure over time.
+- **False Positive Management**: Mark findings as accepted risks. The engine will permanently mute them in all future scans.
+- **Native PDF Export**: Generate beautiful, C-level executive PDF reports using headless Chromium.
+- **Automated Scheduling**: Set up cron-based automated scans directly from the UI.
+- **CI/CD Ready**: Trigger scans from GitHub Actions/GitLab CI with seamless API Key authentication and Webhook alerting.
 
 ---
 
-## 🚀 Installation & Démarrage Rapide
+## Getting Started
 
-La méthode la plus simple pour déployer Sentinel est d'utiliser Docker.
+### Prerequisites
 
-### Prérequis
-*   Docker & Docker Compose installés.
+*   Docker Desktop (or Docker Engine + Docker Compose)
 *   Git
 
-### Déploiement Docker
+### Installation & Deployment
 
-1. **Cloner le repository**
-   ```bash
+Deploying Sentinel in your local environment or server is highly simplified via Docker.
+
+1. **Clone the repository**
+   ```sh
    git clone https://github.com/xeanoob/sentinel.git
    cd sentinel
    ```
 
-2. **Configurer les variables d'environnement (Optionnel)**
-   Modifiez le fichier `backend/config.py` ou passez des variables d'environnement au conteneur pour changer la `SENTINEL_API_KEY` (utilisée pour l'accès CI/CD sans mot de passe).
+2. **Configure Environment Variables**
+   Sentinel uses default environment variables that work out of the box. For production, edit the variables in `docker-compose.yml` or your `.env` file to set your secure `SENTINEL_API_KEY`.
 
-3. **Lancer les conteneurs**
-   ```bash
-   docker-compose up --build -d
+3. **Start the infrastructure**
+   ```sh
+   docker-compose up -d --build
    ```
 
-4. **Accéder à l'application**
-   Ouvrez `http://localhost:3000` dans votre navigateur.
-   Le mot de passe par défaut est la configuration cookie Master Password (ou modifiez le middleware Next.js selon vos besoins).
+4. **Access the Dashboard**
+   Navigate to `http://localhost:3000` in your browser.
+
+*(For local bare-metal development, refer to the frontend `package.json` and backend `requirements.txt`.)*
 
 ---
 
-## 🛠️ Développement Local
+## Usage
 
-Si vous souhaitez modifier le code de Sentinel :
+### User Interface
+Once logged into the dashboard, you can initiate a **Live Scan** by providing a target URL. The UI streams logs and findings in real-time via Server-Sent Events (SSE). 
 
-### 1. Backend (FastAPI + Celery)
-```bash
-cd backend
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-playwright install chromium
+You can also use the **History & Compare** tab to visualize the delta (introduced vs. resolved vulnerabilities) between any two historical scans.
 
-# Lancer Redis en local (requis)
-docker run -d -p 6379:6379 redis:alpine
+### CI/CD Integration
+Sentinel provides a robust REST API designed for headless execution. You can bypass cookie authentication using your Master API Key.
 
-# Lancer l'API FastAPI
-python main.py
-
-# (Dans un autre terminal) Lancer le worker Celery
-celery -A worker.celery_app worker --loglevel=info
-```
-
-### 2. Frontend (Next.js)
-```bash
-cd ../ # Retour à la racine (src/)
-npm install
-npm run dev
+**Example: Triggering a scan via cURL**
+```sh
+curl -X POST http://sentinel.your-company.internal:8000/api/v1/scans \
+  -H "Content-Type: application/json" \
+  -H "X-API-Key: ci-cd-secret-key-change-me-in-prod" \
+  -d '{
+    "target_url": "https://staging.your-app.com",
+    "max_depth": 3,
+    "max_concurrency": 10,
+    "webhook_url": "https://hooks.slack.com/services/T0000/B0000/XXXX"
+  }'
 ```
 
 ---
 
-## 🤖 Intégration CI/CD (GitHub Actions)
+## Extending Sentinel
 
-Sentinel est pensé pour s'intégrer dans vos pipelines. Voici un exemple pour lancer un scan automatiquement après chaque déploiement :
+Sentinel's modular architecture allows security engineers to write custom vulnerability signatures easily.
 
-```yaml
-name: DAST Security Scan
-on:
-  push:
-    branches: [ "main" ]
+All active scanning modules reside in `backend/scanner/modules/`. To add a new vulnerability check:
 
-jobs:
-  security-scan:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger Sentinel
-        run: |
-          curl -X POST https://votre-sentinel.com/api/v1/scans \
-            -H "Content-Type: application/json" \
-            -H "X-API-Key: ${{ secrets.SENTINEL_API_KEY }}" \
-            -d '{
-              "target_url": "https://staging.votre-app.com",
-              "max_depth": 2
-            }'
+1. Create a new python file (e.g., `my_custom_check.py`).
+2. Inherit from `BaseModule`.
+3. Implement `run_page(page, url, response)` for DOM/Response analysis, or `run_domain(domain)` for infrastructure checks.
+
+```python
+from modules.base import BaseModule
+from models import Finding, Severity
+
+class CustomHeaderModule(BaseModule):
+    async def run_page(self, page, url: str, response) -> list[Finding]:
+        findings = []
+        headers = response.headers
+        if "x-custom-security" not in headers:
+            findings.append(Finding(
+                url=url,
+                vulnerability_type="Missing Custom Security Header",
+                severity=Severity.LOW,
+                description="The application does not enforce the custom security header.",
+                recommendation="Add 'X-Custom-Security: enforce' to the server configuration."
+            ))
+        return findings
 ```
 
 ---
 
-## 🛡️ Fonctionnalités du Moteur DAST (Modules)
+## License
 
-Le dossier `backend/scanner/modules/` contient les scripts d'audit de sécurité. Les modules inclus sont :
-*   `xss.py` : Injection de payloads XSS dans les formulaires et l'URL.
-*   `sqli.py` : Détection de comportements anormaux suite à des apostrophes ou requêtes SQL.
-*   `open_redirect.py` : Vérification des redirections non validées.
-*   `secrets.py` : Recherche de tokens (AWS, JWT, API Keys) dans le DOM et le code source.
-*   `ssl_check.py` : Analyse de la validité du certificat TLS/SSL.
-*   `headers.py` : Vérification des headers de sécurité (HSTS, CSP, X-Frame-Options).
-*   Et de nombreux autres (LFI, SSRF, CSRF, etc.) facilement extensibles.
-
-**Créer un nouveau module :**
-Il suffit de créer un nouveau fichier dans `modules/` héritant de `BaseModule` (voir `base.py`) et de surcharger la méthode `run_page()` ou `run_domain()`.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 
-<div align="center">
-  <i>Développé avec ❤️ pour sécuriser le web moderne.</i>
-</div>
+<p align="center">
+  <i>Engineered for modern web security.</i>
+</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Next-url]: https://nextjs.org/
+[Tailwind]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
+[Tailwind-url]: https://tailwindcss.com
+[FastAPI]: https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi
+[FastAPI-url]: https://fastapi.tiangolo.com/
+[Celery]: https://img.shields.io/badge/celery-%2337814A.svg?style=for-the-badge&logo=celery&logoColor=white
+[Celery-url]: https://docs.celeryq.dev/
+[Redis]: https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white
+[Redis-url]: https://redis.io/
+[Playwright]: https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white
+[Playwright-url]: https://playwright.dev/
