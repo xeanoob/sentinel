@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Activity, ShieldAlert, Target, AlertTriangle } from "lucide-react";
+import { getApiBaseUrl } from "@/lib/api";
 
 type AnalyticsData = {
   total_scans: number;
@@ -19,7 +20,7 @@ export function AnalyticsPanel() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/v1/analytics")
+    fetch(`${getApiBaseUrl()}/api/v1/analytics`)
       .then((res) => res.json())
       .then((json) => {
         setData(json);
