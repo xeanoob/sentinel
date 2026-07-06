@@ -139,18 +139,18 @@ export function AnalyticsPanel() {
         {data.recent_scans.length < 2 ? (
           <div className="text-sm text-[#737373]">Not enough scan history to display trend.</div>
         ) : (
-          <div className="h-40 flex items-end gap-2 mt-10">
+          <div className="h-40 flex items-end gap-3 mt-6 pb-6">
             {data.recent_scans.map((scan, i) => {
               const height = scan.findings > 0 ? (scan.findings / maxFindings) * 100 : 2; // minimum 2% for visibility
               const dateObj = scan.date ? new Date(scan.date) : null;
               const dateStr = dateObj ? `${dateObj.getMonth()+1}/${dateObj.getDate()}` : "N/A";
               return (
-                <div key={i} className="flex-1 flex flex-col items-center group relative">
+                <div key={i} className="flex-1 h-full flex flex-col justify-end items-center group relative">
                   <div 
                     className="w-full bg-blue-600/80 hover:bg-blue-500 rounded-t transition-all"
                     style={{ height: `${height}%` }}
                   />
-                  <div className="mt-2 text-[10px] text-[#737373] rotate-45 origin-left mb-4">{dateStr}</div>
+                  <div className="absolute -bottom-6 text-[10px] text-[#737373] whitespace-nowrap">{dateStr}</div>
                   
                   {/* Tooltip */}
                   <div className="absolute -top-8 bg-[#262626] text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10">
