@@ -1,0 +1,1182 @@
+{
+  "scan_id": "43a4c49f3401",
+  "request": {
+    "target_url": "http://localhost:3002",
+    "max_depth": 2,
+    "max_concurrency": 5,
+    "page_timeout_ms": 5000,
+    "same_domain_only": true,
+    "use_browser": false,
+    "custom_headers": {},
+    "stealth_mode": false,
+    "auth_config": null,
+    "is_api_scan": false,
+    "active_fuzzing": false,
+    "is_graphql_scan": false,
+    "ai_api_key": null,
+    "secondary_auth_config": null,
+    "webhook_url": null
+  },
+  "status": "completed",
+  "pages_visited": 28,
+  "findings": [
+    {
+      "url": "http://localhost:3002/",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/",
+      "vulnerability_type": "Information Disclosure: French SSN (NIR)",
+      "severity": "High",
+      "description": "Found a potential French SSN (NIR) leaked in the HTTP response body: 1040***3617",
+      "recommendation": "Remove the French SSN (NIR) from the source code or database output. If this is a real key, revoke it immediately."
+    },
+    {
+      "url": "http://localhost:3002/services",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/services",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/services",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/services",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/services",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/services",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/services",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/services",
+      "vulnerability_type": "Information Disclosure: French SSN (NIR)",
+      "severity": "High",
+      "description": "Found a potential French SSN (NIR) leaked in the HTTP response body: 2240***8583",
+      "recommendation": "Remove the French SSN (NIR) from the source code or database output. If this is a real key, revoke it immediately."
+    },
+    {
+      "url": "http://localhost:3002/projets",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/projets",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/projets",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/projets",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/projets",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/projets",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/projets",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/projets",
+      "vulnerability_type": "Information Disclosure: French SSN (NIR)",
+      "severity": "High",
+      "description": "Found a potential French SSN (NIR) leaked in the HTTP response body: 1780***2266",
+      "recommendation": "Remove the French SSN (NIR) from the source code or database output. If this is a real key, revoke it immediately."
+    },
+    {
+      "url": "http://localhost:3002/competences",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/competences",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/competences",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/competences",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/competences",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/competences",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/competences",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/parcours",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/parcours",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/parcours",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/parcours",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/parcours",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/parcours",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/parcours",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/certifications",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/certifications",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/certifications",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/certifications",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/certifications",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/certifications",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/certifications",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/certifications",
+      "vulnerability_type": "Information Disclosure: French SSN (NIR)",
+      "severity": "High",
+      "description": "Found a potential French SSN (NIR) leaked in the HTTP response body: 2360***5536",
+      "recommendation": "Remove the French SSN (NIR) from the source code or database output. If this is a real key, revoke it immediately."
+    },
+    {
+      "url": "http://localhost:3002/veille",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/veille",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/veille",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/veille",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/veille",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/veille",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/veille",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/contact",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/contact",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/contact",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/contact",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/contact",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/contact",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/contact",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/projets/ene-microstation",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/projets/ene-microstation",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/projets/ene-microstation",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/projets/ene-microstation",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/projets/ene-microstation",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/projets/ene-microstation",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/projets/ene-microstation",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/projets/serveur-minecraft",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/projets/serveur-minecraft",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/projets/serveur-minecraft",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/projets/serveur-minecraft",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/projets/serveur-minecraft",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/projets/serveur-minecraft",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/projets/serveur-minecraft",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/projets/complement-outlook",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/projets/complement-outlook",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/projets/complement-outlook",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/projets/complement-outlook",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/projets/complement-outlook",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/projets/complement-outlook",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/projets/complement-outlook",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/projets/complement-outlook",
+      "vulnerability_type": "Information Disclosure: French SSN (NIR)",
+      "severity": "High",
+      "description": "Found a potential French SSN (NIR) leaked in the HTTP response body: 2251***6081",
+      "recommendation": "Remove the French SSN (NIR) from the source code or database output. If this is a real key, revoke it immediately."
+    },
+    {
+      "url": "http://localhost:3002/projets/hound-search",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/projets/hound-search",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/projets/hound-search",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/projets/hound-search",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/projets/hound-search",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/projets/hound-search",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/projets/hound-search",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/mentions-legales",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/mentions-legales",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/mentions-legales",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/mentions-legales",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/mentions-legales",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/mentions-legales",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/mentions-legales",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/projets/stocko-erp",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/projets/stocko-erp",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/projets/stocko-erp",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/projets/stocko-erp",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/projets/stocko-erp",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/projets/stocko-erp",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/projets/stocko-erp",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/projets/offtime-studio",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/projets/offtime-studio",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/projets/offtime-studio",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/projets/offtime-studio",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/projets/offtime-studio",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/projets/offtime-studio",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/projets/offtime-studio",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/projets/alunisson",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/projets/alunisson",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/projets/alunisson",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/projets/alunisson",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/projets/alunisson",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/projets/alunisson",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/projets/alunisson",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/projets/gsb-compte-rendu",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/projets/gsb-compte-rendu",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/projets/gsb-compte-rendu",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/projets/gsb-compte-rendu",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/projets/gsb-compte-rendu",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/projets/gsb-compte-rendu",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/projets/gsb-compte-rendu",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/projets/nomad-collective",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/projets/nomad-collective",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/projets/nomad-collective",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/projets/nomad-collective",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/projets/nomad-collective",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/projets/nomad-collective",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/projets/nomad-collective",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/projets/gestion-jo-2024",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/projets/gestion-jo-2024",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/projets/gestion-jo-2024",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/projets/gestion-jo-2024",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/projets/gestion-jo-2024",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/projets/gestion-jo-2024",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/projets/gestion-jo-2024",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/projets/gestion-jo-2024",
+      "vulnerability_type": "Information Disclosure: French SSN (NIR)",
+      "severity": "High",
+      "description": "Found a potential French SSN (NIR) leaked in the HTTP response body: 2340***3626",
+      "recommendation": "Remove the French SSN (NIR) from the source code or database output. If this is a real key, revoke it immediately."
+    },
+    {
+      "url": "http://localhost:3002/projets/analyse-graphes",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/projets/analyse-graphes",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/projets/analyse-graphes",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/projets/analyse-graphes",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/projets/analyse-graphes",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/projets/analyse-graphes",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/projets/analyse-graphes",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/projets/analyse-graphes",
+      "vulnerability_type": "Information Disclosure: French SSN (NIR)",
+      "severity": "High",
+      "description": "Found a potential French SSN (NIR) leaked in the HTTP response body: 2641***5453",
+      "recommendation": "Remove the French SSN (NIR) from the source code or database output. If this is a real key, revoke it immediately."
+    },
+    {
+      "url": "http://localhost:3002/projets/garanches-ecommerce",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/projets/garanches-ecommerce",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/projets/garanches-ecommerce",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/projets/garanches-ecommerce",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/projets/garanches-ecommerce",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/projets/garanches-ecommerce",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/projets/garanches-ecommerce",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/projets/garanches-ecommerce",
+      "vulnerability_type": "Information Disclosure: French SSN (NIR)",
+      "severity": "High",
+      "description": "Found a potential French SSN (NIR) leaked in the HTTP response body: 1080***7068",
+      "recommendation": "Remove the French SSN (NIR) from the source code or database output. If this is a real key, revoke it immediately."
+    },
+    {
+      "url": "http://localhost:3002/projets/bellenippe-fashion",
+      "vulnerability_type": "Missing Header: Content-Security-Policy",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate Content-Security-Policy (CSP) est absent. Cela permet l'injection de scripts malveillants (XSS) et le chargement de ressources non autoris\u00e9es.",
+      "recommendation": "Ajouter un en-t\u00eate CSP restrictif, par ex. : Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    },
+    {
+      "url": "http://localhost:3002/projets/bellenippe-fashion",
+      "vulnerability_type": "Missing Header: Strict-Transport-Security",
+      "severity": "High",
+      "description": "L'en-t\u00eate HSTS (Strict-Transport-Security) est absent. Les utilisateurs sont vuln\u00e9rables aux attaques de downgrade HTTPS \u2192 HTTP et au MITM.",
+      "recommendation": "Ajouter : Strict-Transport-Security: max-age=31536000; includeSubDomains; preload"
+    },
+    {
+      "url": "http://localhost:3002/projets/bellenippe-fashion",
+      "vulnerability_type": "Missing Header: X-Frame-Options",
+      "severity": "Medium",
+      "description": "L'en-t\u00eate X-Frame-Options est absent. La page peut \u00eatre int\u00e9gr\u00e9e dans un iframe, exposant \u00e0 des attaques de clickjacking.",
+      "recommendation": "Ajouter : X-Frame-Options: DENY  ou  X-Frame-Options: SAMEORIGIN"
+    },
+    {
+      "url": "http://localhost:3002/projets/bellenippe-fashion",
+      "vulnerability_type": "Missing Header: X-Content-Type-Options",
+      "severity": "Low",
+      "description": "L'en-t\u00eate X-Content-Type-Options est absent. Le navigateur peut interpr\u00e9ter le contenu de mani\u00e8re inattendue (MIME sniffing).",
+      "recommendation": "Ajouter : X-Content-Type-Options: nosniff"
+    },
+    {
+      "url": "http://localhost:3002/projets/bellenippe-fashion",
+      "vulnerability_type": "Missing Header: Referrer-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Referrer-Policy est absent. Les URLs compl\u00e8tes (avec param\u00e8tres potentiellement sensibles) peuvent fuiter via le Referer.",
+      "recommendation": "Ajouter : Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "url": "http://localhost:3002/projets/bellenippe-fashion",
+      "vulnerability_type": "Missing Header: Permissions-Policy",
+      "severity": "Low",
+      "description": "L'en-t\u00eate Permissions-Policy est absent. Les fonctionnalit\u00e9s du navigateur (cam\u00e9ra, micro, g\u00e9oloc) ne sont pas restreintes.",
+      "recommendation": "Ajouter : Permissions-Policy: camera=(), microphone=(), geolocation=()"
+    },
+    {
+      "url": "http://localhost:3002/projets/bellenippe-fashion",
+      "vulnerability_type": "Technology Disclosure (X-Powered-By)",
+      "severity": "Low",
+      "description": "Le header X-Powered-By r\u00e9v\u00e8le la technologie utilis\u00e9e : \u00ab Next.js \u00bb. Cela aide un attaquant \u00e0 identifier les vuln\u00e9rabilit\u00e9s sp\u00e9cifiques \u00e0 ce framework.",
+      "recommendation": "Supprimer le header X-Powered-By dans la configuration du serveur."
+    },
+    {
+      "url": "http://localhost:3002/projets/bellenippe-fashion",
+      "vulnerability_type": "Information Disclosure: French SSN (NIR)",
+      "severity": "High",
+      "description": "Found a potential French SSN (NIR) leaked in the HTTP response body: 1931***0872",
+      "recommendation": "Remove the French SSN (NIR) from the source code or database output. If this is a real key, revoke it immediately."
+    },
+    {
+      "url": "http://localhost:3002/robots.txt",
+      "vulnerability_type": "Sensitive File Exposed",
+      "severity": "Low",
+      "description": "robots.txt trouv\u00e9 \u2014 peut r\u00e9v\u00e9ler des chemins cach\u00e9s. Le fichier \u00ab robots.txt \u00bb est accessible publiquement.",
+      "recommendation": "Bloquer l'acc\u00e8s \u00e0 \u00ab robots.txt \u00bb dans la configuration du serveur web. Par ex. dans nginx : location ~* /\\.(?:env|git) { deny all; }"
+    },
+    {
+      "url": "http://localhost:3002/",
+      "vulnerability_type": "No HTTPS",
+      "severity": "High",
+      "description": "Le site localhost:3002 n'utilise pas HTTPS. Toutes les communications sont en clair et peuvent \u00eatre intercept\u00e9es (MITM).",
+      "recommendation": "Activer HTTPS avec un certificat TLS valide (Let's Encrypt est gratuit). Rediriger tout le trafic HTTP vers HTTPS."
+    }
+  ],
+  "error": null,
+  "start_time": "2026-07-06T22:46:27.727401+00:00",
+  "end_time": "2026-07-06T22:46:33.895645+00:00"
+}
