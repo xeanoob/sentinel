@@ -56,6 +56,8 @@ app.add_middleware(
 
 # Register routes
 app.include_router(scans_router)
+app.include_router(schedules_router)
+app.include_router(analytics_router)
 
 
 # ---------------------------------------------------------------------------
